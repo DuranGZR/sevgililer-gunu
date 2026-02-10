@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Quicksand:wght@400;500;600&display=swap');
+
+/* ===== ENVELOPE PAGE ===== */
+.envelope-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    padding: 40px 20px;
+}
+
+/* Decorative roses */
+.rose {
+    position: fixed;
+    font-size: 2.5rem;
+    opacity: 0.6;
+    filter: brightness(0.7) saturate(1.2);
+}
+
+.rose-left {
+    bottom: 80px;
+    left: 40px;
+    transform: rotate(-15deg);
+}
+
+.rose-right {
+    top: 50%;
+    right: 30px;
+    transform: rotate(15deg);
+    font-size: 1.5rem;
+    opacity: 0.4;
+}
+
+/* Title section */
+.envelope-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.envelope-title .subtitle {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(255, 200, 200, 0.6);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.envelope-title h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #c9a87c;
+    margin: 0;
+    text-shadow: 0 2px 20px rgba(201, 168, 124, 0.3);
+}
+
+/* ===== ENVELOPE ===== */
+.envelope {
+    position: relative;
+    width: 340px;
+    height: 220px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Envelope back (main body) */
+.env-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #f5f0eb 0%, #ebe5de 100%);
+    border-radius: 4px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Front fold (bottom) */
+.env-front {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+    border-bottom: 120px solid #e8e2db;
+    z-index: 2;
+}
+
+/* Top flap */
+.env-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+    border-top: 110px solid #ddd7cf;
+    transform-origin: top center;
+    z-index: 3;
+}
+
+/* Side shadows for depth */
+.env-back::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(to right, rgba(0, 0, 0, 0.05) 0%, transparent 10%, transparent 90%, rgba(0, 0, 0, 0.05) 100%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 0%, transparent 20%);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+/* ===== WAX SEAL ===== */
+.wax-seal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    z-index: 10;
+}
+
+.seal-inner {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%,
+            #9a2a2a 0%,
+            #7a1a1a 40%,
+            #5a0a0a 80%,
+            #4a0505 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.5),
+        0 2px 5px rgba(0, 0, 0, 0.4),
+        inset 2px 2px 8px rgba(255, 150, 150, 0.2),
+        inset -2px -2px 8px rgba(0, 0, 0, 0.4);
+    animation: sealPulse 2s ease-in-out infinite;
+}
+
+.seal-inner span {
+    font-size: 1.6rem;
+    color: rgba(120, 40, 40, 0.8);
+    text-shadow:
+        1px 1px 2px rgba(0, 0, 0, 0.3),
+        -1px -1px 1px rgba(200, 100, 100, 0.2);
+}
+
+@keyframes sealPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow:
+            0 4px 15px rgba(0, 0, 0, 0.5),
+            0 2px 5px rgba(0, 0, 0, 0.4),
+            0 0 20px rgba(154, 42, 42, 0.3);
+    }
+
+    50% {
+        transform: scale(1.03);
+        box-shadow:
+            0 4px 15px rgba(0, 0, 0, 0.5),
+            0 2px 5px rgba(0, 0, 0, 0.4),
+            0 0 35px rgba(154, 42, 42, 0.5);
+    }
+}
+
+/* Seal breaking pieces */
+.seal-piece {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    background: radial-gradient(circle, #8b2020 30%, #6b1515 100%);
+    border-radius: 3px 8px 5px 2px;
+    z-index: 20;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.piece-1 {
+    margin-top: -12px;
+    margin-left: -12px;
+    border-radius: 2px 6px 4px 8px;
+}
+
+.piece-2 {
+    margin-top: -10px;
+    margin-left: 0px;
+    border-radius: 6px 3px 7px 2px;
+    width: 14px;
+    height: 13px;
+}
+
+.piece-3 {
+    margin-top: 2px;
+    margin-left: -10px;
+    border-radius: 4px 2px 5px 7px;
+    width: 13px;
+    height: 14px;
+}
+
+.piece-4 {
+    margin-top: 0px;
+    margin-left: 2px;
+    border-radius: 7px 4px 2px 5px;
+    width: 15px;
+    height: 12px;
+}
+
+/* Tap hint */
+.tap-hint {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.chevron {
+    font-size: 1.2rem;
+    color: rgba(201, 168, 124, 0.6);
+    animation: pulse-side 1.5s ease-in-out infinite;
+}
+
+.chevron-center {
+    font-size: 1rem;
+    color: rgba(201, 168, 124, 0.8);
+    animation: pulse-heart 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-side {
+
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+    }
+}
+
+@keyframes pulse-heart {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 400px) {
+    .envelope {
+        width: 300px;
+        height: 195px;
+    }
+
+    .env-front {
+        border-left: 150px solid transparent;
+        border-right: 150px solid transparent;
+        border-bottom: 105px solid #e8e2db;
+    }
+
+    .env-flap {
+        border-left: 150px solid transparent;
+        border-right: 150px solid transparent;
+        border-top: 95px solid #ddd7cf;
+    }
+
+    .envelope-title h1 {
+        font-size: 2.8rem;
+    }
+
+    .wax-seal {
+        width: 50px;
+        height: 50px;
+    }
+}

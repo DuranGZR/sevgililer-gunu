@@ -1,0 +1,192 @@
+.envelopeWrapper {
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.envelope {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    transform-style: preserve-3d;
+}
+
+.envelopeBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #f5e6d3 0%, #e8d5c4 100%);
+    border-radius: 8px;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        0 0 60px rgba(255, 107, 138, 0.2),
+        inset 0 2px 0 rgba(255, 255, 255, 0.3);
+}
+
+.envelopeFront {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+}
+
+.triangleBottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 130px solid #edd9c8;
+    filter: drop-shadow(0 -2px 3px rgba(0, 0, 0, 0.1));
+}
+
+.envelopeFlap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    transform-origin: top center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.triangleTop {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid #dcc9b8;
+    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
+}
+
+.flapOpen {
+    transform: rotateX(180deg);
+}
+
+.flapOpen .triangleTop {
+    border-top-color: #c9b8a8;
+}
+
+.heartSeal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    color: #e63946;
+    filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.5));
+    z-index: 20;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.heartSeal svg {
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+.decorativeHearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.miniHeart {
+    position: absolute;
+    font-size: 10px;
+    color: #ff6b8a;
+    opacity: 0.6;
+    left: var(--x);
+    top: var(--y);
+    animation: twinkle 2s ease-in-out infinite;
+    animation-delay: var(--delay);
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
+
+.glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 250px;
+    background: radial-gradient(ellipse, rgba(255, 107, 138, 0.3) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+
+/* Hover effects */
+.envelope:hover .heartSeal {
+    animation: heartbeatFast 0.5s ease-in-out infinite;
+}
+
+@keyframes heartbeatFast {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+/* Open state */
+.open .envelopeBack {
+    box-shadow:
+        0 15px 50px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(255, 107, 138, 0.3);
+}

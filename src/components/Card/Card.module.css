@@ -1,0 +1,224 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    perspective: 1500px;
+    position: relative;
+}
+
+/* ===== FLIP SPARKLES ===== */
+.sparkle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 1rem;
+    color: #c9a87c;
+    z-index: 100;
+    pointer-events: none;
+    text-shadow:
+        0 0 8px rgba(201, 168, 124, 0.9),
+        0 0 20px rgba(201, 168, 124, 0.5);
+}
+
+/* ===== CARD CONTAINER - 3D Flip ===== */
+.cardContainer {
+    position: relative;
+    width: 380px;
+    height: 560px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+}
+
+.cardContainer.flipped {
+    transform: rotateY(180deg);
+}
+
+/* ===== CARD SIDES ===== */
+.cardFront,
+.cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.cardBack {
+    transform: rotateY(180deg);
+}
+
+/* ===== OUTER BORDER ===== */
+.outerBorder {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #5a2a2a 0%, #4a2020 100%);
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(154, 42, 42, 0.2);
+    border: 1px solid rgba(201, 168, 124, 0.3);
+}
+
+/* ===== HEARTS ===== */
+.heart {
+    position: absolute;
+    color: #8a4a4a;
+    z-index: 2;
+    opacity: 0.6;
+}
+
+/* ===== INNER AREA ===== */
+.innerArea {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #faf6f0 0%, #f5efe5 100%);
+    border: 2px solid #c9a87c;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 20px;
+}
+
+/* ===== HEART HEADER ===== */
+.heartHeader {
+    position: relative;
+    width: 140px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.heartSvg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.headerText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.2rem;
+    color: #8a3a3a;
+    white-space: nowrap;
+}
+
+/* ===== MESSAGE ===== */
+.messageBox {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10px;
+}
+
+.message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    line-height: 1.65;
+    color: #4a2525;
+    text-align: justify;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    word-spacing: -0.5px;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.cursor {
+    color: #8a3a3a;
+    animation: blink 0.6s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* ===== PHOTO FRAME (Back side) ===== */
+.photoFrame {
+    flex: 1;
+    width: 85%;
+    border: 3px solid #c9a87c;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: high-quality;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.photoCaption {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5rem;
+    color: #8a3a3a;
+    margin: 0;
+}
+
+/* ===== HINT ===== */
+.hint {
+    margin-top: 20px;
+}
+
+.flipIcon {
+    font-size: 1.8rem;
+    color: #c9a87c;
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 400px) {
+    .cardContainer {
+        width: 320px;
+        height: 460px;
+    }
+
+    .message {
+        font-size: 1.05rem;
+    }
+}
