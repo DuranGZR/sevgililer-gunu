@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import photo from '../../assets/photo.png'
 import styles from './Card.module.css'
 
 const Card = () => {
@@ -139,7 +140,7 @@ const Card = () => {
 
                         <div className={styles.innerArea}>
                             <div className={styles.photoFrame}>
-                                <img src="./photo.png" alt="Bizim fotoğrafımız" className={styles.photo} />
+                                <img src={photo} alt="Bizim fotoğrafımız" className={styles.photo} />
                             </div>
                             <p className={styles.photoCaption}>Sonsuza dek seninle... ❤</p>
                         </div>
