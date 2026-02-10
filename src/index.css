@@ -25,28 +25,27 @@
   --envelope-dark: #ddd7cf;
 }
 
-html,
-body,
-#root {
+html {
   height: 100%;
   width: 100%;
-  overflow-x: hidden;
-  /* Prevent white bars on overscroll */
   background-color: #1a0808;
-  overscroll-behavior: none;
+  overflow: hidden;
 }
 
 body {
   font-family: 'Quicksand', sans-serif;
   background: var(--bg-gradient);
-  /* Modern mobile viewport fix */
-  min-height: 100vh;
-  min-height: 100dvh;
-  position: fixed;
-  /* Prevent scroll bounce */
+  height: 100%;
   width: 100%;
-  top: 0;
-  left: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .app {
@@ -54,12 +53,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100%;
+  height: 100dvh;
   width: 100%;
   position: relative;
-  z-index: 1;
+  overflow: hidden;
 }
 
+/* Vignette overlay */
 .app::before {
   content: '';
   position: fixed;
@@ -74,9 +75,11 @@ body {
   z-index: 0;
 }
 
-/* Fancy cursor */
-body {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='%23ff6b8a'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") 10 10, auto;
+/* Fancy cursor - only desktop */
+@media (hover: hover) {
+  body {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='%23ff6b8a'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") 10 10, auto;
+  }
 }
 
 ::selection {
