@@ -212,13 +212,33 @@
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 400px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
     .cardContainer {
-        width: 320px;
-        height: 460px;
+        width: 310px;
+        height: 480px;
+        /* Slightly reduce height to fit viewport */
     }
 
     .message {
-        font-size: 1.05rem;
+        font-size: 0.8rem;
+        padding: 0 5px;
+    }
+
+    .headerText {
+        font-size: 1.2rem;
+    }
+
+    .messageBox {
+        margin-top: 15px;
+    }
+
+    .photoFrame {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .photoCaption {
+        font-size: 1.2rem;
     }
 }

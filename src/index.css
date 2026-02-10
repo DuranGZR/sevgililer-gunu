@@ -31,12 +31,22 @@ body,
   height: 100%;
   width: 100%;
   overflow-x: hidden;
+  /* Prevent white bars on overscroll */
+  background-color: #1a0808;
+  overscroll-behavior: none;
 }
 
 body {
   font-family: 'Quicksand', sans-serif;
   background: var(--bg-gradient);
+  /* Modern mobile viewport fix */
   min-height: 100vh;
+  min-height: 100dvh;
+  position: fixed;
+  /* Prevent scroll bounce */
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 .app {

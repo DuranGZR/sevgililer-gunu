@@ -276,30 +276,47 @@
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 400px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
     .envelope {
-        width: 300px;
-        height: 195px;
+        width: 320px;
+        height: 160px;
     }
 
+    /* Üçgen kapakların mobilde yeniden hesaplanması */
     .env-front {
-        border-left: 150px solid transparent;
-        border-right: 150px solid transparent;
-        border-bottom: 105px solid #e8e2db;
+        border-left: 160px solid transparent;
+        border-right: 160px solid transparent;
+        border-bottom: 90px solid #e8e2db;
     }
 
     .env-flap {
-        border-left: 150px solid transparent;
-        border-right: 150px solid transparent;
-        border-top: 95px solid #ddd7cf;
+        border-left: 160px solid transparent;
+        border-right: 160px solid transparent;
+        border-top: 85px solid #ddd7cf;
     }
 
     .envelope-title h1 {
-        font-size: 2.8rem;
+        font-size: 2.2rem;
+        margin-top: -20px;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .tap-hint {
+        margin-top: 30px;
     }
 
     .wax-seal {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
+        margin-top: -22px;
+        margin-left: -22px;
+    }
+
+    .heart-stamp {
+        font-size: 1.2rem;
     }
 }
