@@ -139,7 +139,7 @@ const Card = () => {
 
                         <div className={styles.innerArea}>
                             <div className={styles.photoFrame}>
-                                <img src="/photo.png" alt="Bizim fotoğrafımız" className={styles.photo} />
+                                <img src="./photo.png" alt="Bizim fotoğrafımız" className={styles.photo} />
                             </div>
                             <p className={styles.photoCaption}>Sonsuza dek seninle... ❤</p>
                         </div>
